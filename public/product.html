@@ -3,56 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Regular Fit T-shirt | Prototype</title>
+    <title>T-shirt Regular Fit | H&M Prototype</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
     <header class="topbar">
-        <div class="logo">H&M Prototype</div>
+        <div class="logo">M&H</div>
+        <nav class="main-nav">
+            <a href="#">DAM</a>
+            <a href="#" class="active">HERR</a>
+            <a href="#">BARN</a>
+            <a href="#">HOME</a>
+            <a href="#">BEAUTY</a>
+        </nav>
     </header>
 
     <main class="product-page">
 
         <!-- Left side: big image -->
         <div class="product-images">
-            <img src="images/tshirt1.jpg" alt="Main image" class="main-image">
+            <img src="https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Front" alt="Main image"
+                class="main-image">
 
             <div class="thumbs">
-                <img src="images/tshirt1.jpg" class="thumb active">
-                <img src="images/tshirt2.jpg" class="thumb">
-                <img src="images/tshirt3.jpg" class="thumb">
+                <img src="https://placehold.co/600x900/EEE/31343C?text=Front" class="thumb active">
+                <img src="https://placehold.co/600x900/EEE/31343C?text=Back" class="thumb">
+                <img src="https://placehold.co/600x900/EEE/31343C?text=Detail" class="thumb">
             </div>
         </div>
 
         <!-- Right side: details -->
         <div class="product-info-panel">
 
-            <h1 class="product-title">Regular Fit T-shirt</h1>
-            <p class="product-price">€9.99</p>
+            <h1 class="product-title">T-shirt Regular Fit</h1>
+            <p class="product-price"><span class="original-price">89,99 kr</span> <span class="discount-price">72,00
+                    kr</span></p>
 
             <div class="sustainability-full">
-                <h3>🌱 Sustainability Info</h3>
+                <h3>🌱 Sustainability Impact</h3>
                 <ul>
-                    <li>Material Impact Score: Low</li>
-                    <li>Recycled fibers: 60%</li>
-                    <li>Produced using reduced water</li>
+                    <li><strong>Eco Rating:</strong> A (Excellent)</li>
+                    <li><strong>Materials:</strong> 100% Organic Cotton</li>
+                    <li><strong>Water Usage:</strong> 50% less than average</li>
+                    <li><strong>Carbon Footprint:</strong> 2.5kg CO2e</li>
                 </ul>
             </div>
 
-            <button class="add-to-cart">Add to cart</button>
+            <button class="add-to-cart">Lägg till i varukorgen</button>
 
             <div class="description">
                 <p>
-                    A soft T-shirt made from a comfortable cotton blend.
-                    Perfect for everyday casual wear with a relaxed, regular fit.
+                    En klassisk T-shirt i mjuk bomullstrikå. Modellen har en rak passform med rund halsringning.
+                    Ett perfekt basplagg för din garderob som kombinerar stil med hållbarhet.
+                </p>
+                <p>
+                    <strong>Passform:</strong> Regular fit<br>
+                    <strong>Komposition:</strong> Bomull 100%
                 </p>
             </div>
 
         </div>
 
     </main>
+
+    <script>
+        // Simple gallery script
+        const thumbs = document.querySelectorAll('.thumb');
+        const mainImage = document.querySelector('.main-image');
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('click', () => {
+                // Remove active class from all
+                thumbs.forEach(t => t.classList.remove('active'));
+                // Add to clicked
+                thumb.classList.add('active');
+                // Update main image
+                mainImage.src = thumb.src.replace('text=Front', 'text=Regular+Fit+Front')
+                    .replace('text=Back', 'text=Regular+Fit+Back')
+                    .replace('text=Detail', 'text=Regular+Fit+Detail');
+
+                // For placeholder logic simplicity, just swapping src text if it matches
+                if (thumb.src.includes('Front')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Front";
+                if (thumb.src.includes('Back')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Back";
+                if (thumb.src.includes('Detail')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Detail";
+            });
+        });
+    </script>
 
 </body>
 

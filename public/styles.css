@@ -217,6 +217,8 @@ a {
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     gap: 60px;
+    align-items: start;
+    /* Prevent images from stretching when info panel grows */
 }
 
 .product-images {
@@ -229,6 +231,7 @@ a {
     flex-direction: column;
     gap: 10px;
     width: 80px;
+    flex-shrink: 0;
 }
 
 .thumb {
@@ -247,7 +250,8 @@ a {
 
 .main-image {
     flex: 1;
-    width: 100%;
+    width: 0;
+    min-width: 0;
     aspect-ratio: 2/3;
     object-fit: cover;
 }
@@ -284,27 +288,228 @@ a {
     background: #444;
 }
 
-.sustainability-full {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 4px;
+/* ---------- SUSTAINABILITY WIDGET ---------- */
+.sustainability-widget {
+    background: #D9EAD3;
+    border: 1px solid #b6d7a8;
+    border-radius: 8px;
     margin-bottom: 30px;
+    font-family: "Meiryo", sans-serif;
+    overflow: hidden;
+    color: #3A5E27;
+    text-transform: none;
 }
 
-.sustainability-full h3 {
-    margin-top: 0;
-    font-size: 16px;
-    color: #006400;
+/* Widget Header with Score */
+.sus-widget-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: #D9EAD3;
+    border-bottom: 1px solid #b6d7a8;
 }
 
-.sustainability-full ul {
-    padding-left: 20px;
-    margin-bottom: 0;
+.sus-score-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #eee;
+    /* Fallback */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
 }
 
-.sustainability-full li {
-    margin-bottom: 8px;
+.sus-score-inner {
+    width: 64px;
+    height: 64px;
+    background: #D9EAD3;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.sus-header-text h3 {
+    margin: 0 0 4px;
+    font-size: 18px;
+    color: #3A5E27;
+}
+
+.sus-header-text p {
+    margin: 0;
+    font-size: 13px;
+    color: #3A5E27;
+}
+
+/* Alerts Section */
+.sus-alerts {
+    background: #fff3cd;
+    /* Light yellow warning background */
+    padding: 16px 20px;
+    border-bottom: 1px solid #ffeeba;
+}
+
+.sus-alerts h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #856404;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sus-alerts ul {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 13px;
+    color: #555;
+}
+
+.sus-alerts li {
+    margin-bottom: 4px;
+}
+
+/* Tabs Header */
+.sus-tabs {
+    display: flex;
+    background: #D9EAD3;
+    border-bottom: 1px solid #b6d7a8;
+}
+
+.sus-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 12px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3A5E27;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.sus-tab:hover {
+    background: #f0f0f0;
+}
+
+.sus-tab.active {
+    background: #D9EAD3;
+    border-bottom-color: #3A5E27;
+    color: #3A5E27;
+}
+
+.tab-score {
+    font-size: 11px;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.score-green {
+    background: #d4edda;
+    color: #155724;
+}
+
+.score-yellow {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.score-red {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Tab Content */
+.sus-tab-content {
+    display: none;
+    padding: 20px;
+    background: #D9EAD3;
+    animation: fadeEffect 0.4s;
+}
+
+.sus-tab-content.active {
+    display: block;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Reusing existing section styles but tweaking for new context */
+.sus-section {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.sus-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.sus-icon-col {
+    font-size: 20px;
+    width: 24px;
+    text-align: center;
+    padding-top: 2px;
+}
+
+.sus-content {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #3A5E27;
+}
+
+.sus-content p {
+    margin: 0 0 6px;
+}
+
+.sus-content strong {
+    font-weight: 600;
+}
+
+.sus-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sus-list li {
+    margin-bottom: 4px;
+    position: relative;
+    padding-left: 10px;
+}
+
+.sus-list li:before {
+    content: "-";
+    position: absolute;
+    left: 0;
+}
+
+.sus-content em {
+    font-style: italic;
 }
 
 @media (max-width: 768px) {

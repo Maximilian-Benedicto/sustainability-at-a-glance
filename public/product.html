@@ -24,14 +24,13 @@
 
         <!-- Left side: big image -->
         <div class="product-images">
-            <img src="https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Front" alt="Main image"
-                class="main-image">
-
             <div class="thumbs">
-                <img src="https://placehold.co/600x900/EEE/31343C?text=Front" class="thumb active">
-                <img src="https://placehold.co/600x900/EEE/31343C?text=Back" class="thumb">
-                <img src="https://placehold.co/600x900/EEE/31343C?text=Detail" class="thumb">
+                <img src="../images/black-shirt-front.jpg" class="thumb active">
+                <img src="../images/black-shirt-back.jpg" class="thumb">
+                <img src="../images/black-sweater-a.jpg" class="thumb">
             </div>
+
+            <img src="../images/black-shirt-front.jpg" alt="Main image" class="main-image">
         </div>
 
         <!-- Right side: details -->
@@ -41,15 +40,118 @@
             <p class="product-price"><span class="original-price">89,99 kr</span> <span class="discount-price">72,00
                     kr</span></p>
 
-            <div class="sustainability-full">
-                <h3>🌱 Sustainability Impact</h3>
-                <ul>
-                    <li><strong>Eco Rating:</strong> A (Excellent)</li>
-                    <li><strong>Materials:</strong> 100% Organic Cotton</li>
-                    <li><strong>Water Usage:</strong> 50% less than average</li>
-                    <li><strong>Carbon Footprint:</strong> 2.5kg CO2e</li>
-                </ul>
+            <div class="sustainability-widget">
+
+                <!-- Total Score Header -->
+                <div class="sus-widget-header">
+                    <div class="sus-score-circle" style="background: conic-gradient(#4caf50 72%, #eee 0);">
+                        <div class="sus-score-inner">72/100</div>
+                    </div>
+                    <div class="sus-header-text">
+                        <h3>Total Hållbarhetspoäng</h3>
+                        <p>Denna produkt har en bra hållbarhetsprofil.</p>
+                    </div>
+                </div>
+
+                <!-- Top Alerts Section -->
+                <div class="sus-alerts">
+                    <h4>⚠️ Viktiga Hållbarhetsfakta</h4>
+                    <ul>
+                        <li><strong>Hög vattenrisk:</strong> Bomullen odlas i Gujarat, Indien, ett område med extrem
+                            vattenstress.</li>
+                        <li><strong>Lönerisk:</strong> Sömnad sker i Bangladesh där minimilönerna ligger under
+                            levnadslön.</li>
+                        <li><strong>Positivt:</strong> 100% av energin i fabriken i Turkiet kommer från solceller.</li>
+                    </ul>
+                </div>
+
+                <!-- Tabs Header -->
+                <div class="sus-tabs">
+                    <button class="sus-tab active" onclick="openTab(event, 'ecological')">
+                        Ekologisk
+                        <span class="tab-score score-green">72/100</span>
+                    </button>
+                    <button class="sus-tab" onclick="openTab(event, 'social')">
+                        Social
+                        <span class="tab-score score-yellow">65/100</span>
+                    </button>
+                    <button class="sus-tab" onclick="openTab(event, 'economic')">
+                        Ekonomisk
+                        <span class="tab-score score-green">80/100</span>
+                    </button>
+                </div>
+
+                <!-- Tab Content: Ecological -->
+                <div id="ecological" class="sus-tab-content active">
+                    <div class="sus-section">
+                        <div class="sus-icon-col">🌐</div>
+                        <div class="sus-content">
+                            <p><strong>CO₂ per plagg:</strong> 3,4 kg <em>(Motsvarar cirka 14 km körning)</em></p>
+                            <p><strong>Vattenförbrukning:</strong> 1 500 liter <em>(Motsvarar cirka 12 minuters
+                                    duschande)</em></p>
+                        </div>
+                    </div>
+                    <div class="sus-section">
+                        <div class="sus-icon-col">♻️</div>
+                        <div class="sus-content">
+                            <p><strong>Material:</strong> 100% Bomull (Better Cotton Initiative).</p>
+                            <p><strong>Kemikalier:</strong> Inga farliga kemikalier används i färgningsprocessen
+                                (Oeko-Tex certifierad).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Social -->
+                <div id="social" class="sus-tab-content">
+                    <div class="sus-section">
+                        <div class="sus-icon-col">👥</div>
+                        <div class="sus-content">
+                            <p><strong>Arbetsvillkor:</strong> Fabriken i Dhaka (Shanta Garments) har kollektivavtal.
+                            </p>
+                            <p><strong>Säkerhet:</strong> Byggnaden är inspekterad och godkänd enligt Accord on Fire and
+                                Building Safety.</p>
+                            <p><strong>Risk:</strong> Landet har generellt låga löner och begränsad facklig frihet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Economic -->
+                <div id="economic" class="sus-tab-content">
+                    <div class="sus-section">
+                        <div class="sus-icon-col">💰</div>
+                        <div class="sus-content">
+                            <p><strong>Prisvärdhet:</strong> Designad för lång livslängd (minst 30 tvättar utan
+                                formförändring).</p>
+                            <p><strong>Lokal utveckling:</strong> Fabriken i Turkiet bidrar till lokal infrastruktur och
+                                skolor.</p>
+                            <p><strong>Transparens:</strong> Full spårbarhet i leverantörskedjan (Tier 1 & 2).</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+            <script>
+                function openTab(evt, tabName) {
+                    var i, tabcontent, tablinks;
+
+                    // Hide all tab content
+                    tabcontent = document.getElementsByClassName("sus-tab-content");
+                    for (i = 0; i < tabcontent.length; i++) {
+                        tabcontent[i].style.display = "none";
+                    }
+
+                    // Remove active class from all tabs
+                    tablinks = document.getElementsByClassName("sus-tab");
+                    for (i = 0; i < tablinks.length; i++) {
+                        tablinks[i].className = tablinks[i].className.replace(" active", "");
+                    }
+
+                    // Show the current tab, and add an "active" class to the button that opened the tab
+                    document.getElementById(tabName).style.display = "block";
+                    evt.currentTarget.className += " active";
+                }
+            </script>
 
             <button class="add-to-cart">Lägg till i varukorgen</button>
 
@@ -80,14 +182,7 @@
                 // Add to clicked
                 thumb.classList.add('active');
                 // Update main image
-                mainImage.src = thumb.src.replace('text=Front', 'text=Regular+Fit+Front')
-                    .replace('text=Back', 'text=Regular+Fit+Back')
-                    .replace('text=Detail', 'text=Regular+Fit+Detail');
-
-                // For placeholder logic simplicity, just swapping src text if it matches
-                if (thumb.src.includes('Front')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Front";
-                if (thumb.src.includes('Back')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Back";
-                if (thumb.src.includes('Detail')) mainImage.src = "https://placehold.co/600x900/EEE/31343C?text=Regular+Fit+Detail";
+                mainImage.src = thumb.src;
             });
         });
     </script>
